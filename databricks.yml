@@ -1,0 +1,50 @@
+# The name of the bundle. run `databricks bundle schema` to see the full bundle settings schema.
+bundle:
+  name: endpoint_project
+
+#all variables that are changing per env
+variables:
+  target_env:
+    description: env deploying to.
+    default: dev
+
+include:
+  #point to the workflow
+  - ./resources/provision_endpoint_workflow.yml
+
+
+targets:
+  dev:
+    presets:
+      name_prefix: ""
+      pipelines_development: true 
+    default: true
+    workspace:
+      host: https://e2-dogfood.staging.cloud.databricks.com/
+    permissions:
+        - user_name: david.levy@databricks.com
+          level: CAN_MANAGE
+    variables:
+        target_env: "dev"
+
+
+
+
+  qa:
+    workspace:
+      host: https://e2-dogfood.staging.cloud.databricks.com/
+    permissions:
+        - user_name: david.levy@databricks.com
+          level: CAN_MANAGE
+    variables:
+        target_env: "qa"
+
+  prod:
+    workspace:
+      host: https://e2-dogfood.staging.cloud.databricks.com/
+    permissions:
+        - user_name: david.levy@databricks.com
+          level: CAN_MANAGE
+    variables:
+        target_env: "prod"
+

@@ -1,0 +1,12 @@
+resources:
+  jobs:
+    provision_endpoint_workflow:
+      name: "${bundle.environment}_provision_endpoint_workflow"
+      tasks:
+        - task_key: deploy_endpoint
+          notebook_task:
+            notebook_path: ../create_endpoint.py
+            source: WORKSPACE
+      parameters:
+        - name: test_env
+          default: ${var.target_env}
