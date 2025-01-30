@@ -1,10 +1,17 @@
 # Databricks notebook source
+# MAGIC %pip install -qq mlflow==2.16.1
+
+# COMMAND ----------
+
 import requests
 import json
 import mlflow
 
+# COMMAND ----------
+
 # Set your Databricks workspace URL and personal access token
 workspace_url = mlflow.utils.databricks_utils.get_databricks_host_creds().host
+print(workspace_url)
 token = dbutils.notebook.entry_point.getDbutils().notebook().getContext().apiToken().get() # os.getenv("DATABRICKS_TOKEN")
 
 # API endpoint for creating a warehouse
