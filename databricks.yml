@@ -11,7 +11,7 @@ variables:
 include:
   #point to the workflow
   - ./resources/provision_endpoint_workflow.yml
-
+  - ./resources/create_sql_warehouse.yml
 
 targets:
   dev:

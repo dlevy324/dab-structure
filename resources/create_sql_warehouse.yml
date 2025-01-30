@@ -1,0 +1,12 @@
+resources:
+  jobs:
+    create_sql_warehouse_workflow:
+      name: "${bundle.environment}_create_sql_warehouse_workflow"
+      tasks:
+        - task_key: create_sql_warehouse
+          notebook_task:
+            notebook_path: ../create_sql_warehouse.py
+            source: WORKSPACE
+      parameters:
+        - name: test_env
+          default: ${var.target_env}
