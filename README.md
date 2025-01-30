@@ -16,3 +16,4 @@
     databricks bundle deploy
     ```
 
+Currently i grab credentials from the notebook context, but we could also use parameters to pass in the credentials, i have an example of that in the DAB.
